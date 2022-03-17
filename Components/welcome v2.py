@@ -1,5 +1,3 @@
-# A bot for ordering food online
-
 import random
 from random import randint
 
@@ -17,7 +15,7 @@ def welcome():
     name = (names[num])
     print("*** Welcome to the Online Chat Bot ***")
     print("*** My name is",name,"***")
-    print("*** I will be here to help you order your delicious food online ***")
+    print("*** I will be here to help you order your Delicious Food online ***")
 
 
 def main():
