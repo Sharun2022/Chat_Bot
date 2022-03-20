@@ -1,8 +1,5 @@
 # Customer details dictionary
 customer_details = {}
-
-
-
 def not_blank(question):
     valid = False
     while not valid:
@@ -11,7 +8,6 @@ def not_blank(question):
             return response.title()
         else:
             print("This cannont be blank")
-
 
 def delivery():
     question = ("Please enter your name ")
@@ -33,3 +29,4 @@ def delivery():
     question = ("Please enter your suburb ")
     customer_details['suburb'] = not_blank(question)
     print (customer_details['suburb'])
+delivery()
