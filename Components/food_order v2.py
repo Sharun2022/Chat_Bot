@@ -37,13 +37,23 @@ while True:
         
 print(num_food)
 
-# Choose food from menu
-print ("Please choose your food(s) by entering the number from the menu")
+ #Choose food from menu
 for item in range(num_food):
     while num_food > 0:
-        food_ordered = int(input())
+        while True:
+            try:
+                food_ordered = int(input("Please choose your food(s) by entering the number from the menu "))
+                if food_ordered >= 1 and food_ordered <= 12:
+                    break
+                else:
+                    print("Your food order must be between 1 and 12")
+            except ValueError:
+                print("That is not a valid number")   
+                print("Please enter a number between 1 and 12") 
+        food_ordered = food_ordered - 1
         order_list.append(food_names[food_ordered])
         order_cost.append(food_prices[food_ordered])
+        print("{} ${:.2f}" .format(food_names[food_ordered],food_prices[food_ordered]))
         num_food = num_food - 1
 
 print(order_list)
