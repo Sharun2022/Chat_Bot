@@ -11,12 +11,13 @@ def not_blank(question):
             print("This cannont be blank")
 
 # Basic instructions
-question = ("Please enter your name ")
-customer_details['name'] = not_blank(question)
-print (customer_details['name'])
+def click_collect():
+    question = ("Please enter your name ")
+    customer_details['name'] = not_blank(question)
+    print (customer_details['name'])
 
-question = ("Please enter your phone number ")
-customer_details['phone'] = not_blank(question)
-print (customer_details['phone'])
+    question = ("Please enter your phone number ")
+    customer_details['phone'] = not_blank(question)
+    print (customer_details['phone'])
 
-print("You will recieve a text, when the food is ready for pickup")
+    print("You will recieve a text, when the food is ready for pickup")
