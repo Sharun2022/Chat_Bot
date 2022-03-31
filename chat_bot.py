@@ -161,6 +161,7 @@ def order_food():
             print("{} ${:.2f}" .format(food_names[food_ordered],food_prices[food_ordered]))
             num_food = num_food - 1
 
+# Print order out -  including if order is delievery or pick up and names and prices of each pizza - total cost including any delivery charge
 def print_order(del_pick):
     print()
     total_cost = sum(order_cost)
@@ -169,8 +170,8 @@ def print_order(del_pick):
         print ("Your Order is for Pickup")
         print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']}")
     elif del_pick == "Delivery":
-        print ("Your Order is for Delivery")
-        total_cost = total_cost 
+        print ("Your Order is for Delivery and a $5 Delivery charge applies")
+        total_cost = total_cost + 5
         print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']} \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
     print()
     print("Your Order Details")
