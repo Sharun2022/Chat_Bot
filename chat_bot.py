@@ -84,7 +84,7 @@ def order_type():
         del_pick = "Delivery"
     return del_pick
 
-# Pick up information - name and phone number
+# Click and Collect information - name and phone number
 def click_collect():
     question = ("Please enter your name ")
     customer_details['name'] = not_blank(question)
@@ -130,7 +130,7 @@ def menu():
 # Food order - menu - print each food ordered with cost
 
 def order_food():
-    # Ask for total number of pizzas for order
+    # Ask for total number of food for order
     num_food = 0 
     while True:
         try:
@@ -161,7 +161,7 @@ def order_food():
             print("{} ${:.2f}" .format(food_names[food_ordered],food_prices[food_ordered]))
             num_food = num_food - 1
 
-# Print order out -  including if order is delievery or pick up and names and prices of each pizza - total cost including any delivery charge
+# Print order out -  including if order is delievery or click & collect and names and prices of each food - total cost including any delivery charge
 def print_order(del_pick):
     print()
     total_cost = sum(order_cost)
@@ -234,7 +234,7 @@ def new_exit():
         customer_details.clear()
         sys.exit()
             
-
+# Main Function
 def main():
     '''
     Purpose: To run all functions 
