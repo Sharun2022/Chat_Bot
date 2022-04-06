@@ -5,15 +5,18 @@ import random
 from random import randint
 
 # List of random names
-names = ["George", "Phoebe", "Sally",  "Michael", "Denise", "Ellen", "Moana", "Duncan", "Louis", "Danny"]
+names = ["George", "Phoebe", "Sally",  "Michael",
+ "Denise", "Ellen", "Moana", "Duncan", "Louis", "Danny"]
 
 # List of Food names
-food_names = ['Spring Rolls', 'Chicken Satay', 'Pork Belly', 'Teriyaki Chicken Sushi (8 Pack)', 'Chicken Curry', 
-'Mee Goreng','Deep Fried Prawns','Nasi Goreng', 'Tom Yum Soup', 'Pad Thai', 
+food_names = ['Spring Rolls', 'Chicken Satay', 'Pork Belly', 
+'Teriyaki Chicken Sushi (8 Pack)', 'Chicken Curry', 
+'Mee Goreng', 'Deep Fried Prawns', 'Nasi Goreng', 'Tom Yum Soup', 'Pad Thai', 
 'Stir Fried Tofu with Rice', 'Whole Duck']
 
 # List of Food Prices
-food_prices = [5.00, 7.50, 10.50, 11.50, 13.50, 14.00, 14.50, 15.00, 15.50, 17.00, 18.50, 23.50]
+food_prices = [5.00, 7.50, 10.50, 11.50, 13.50, 14.00, 14.50, 
+15.00, 15.50, 17.00, 18.50, 23.50]
 
 #list to store ordered Food 
 order_list =[]
@@ -42,8 +45,6 @@ def val_int(low, high, question):
                 num = int(input(question))
                 if num >= low and num <= high :
                     return num
-                else: 
-                    print(f"Please enter a number between {low} and {high}")
             except ValueError:
                 print ("That is not a valid number")
                 print (f"Please enter a number between {low} and {high}")
@@ -170,8 +171,7 @@ def print_order(del_pick):
         print ("Your Order is for Pickup")
         print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']}")
     elif del_pick == "Delivery":
-        print ("Your Order is for Delivery and a $5 Delivery charge applies")
-        total_cost = total_cost + 5
+        print ("Your Order is for Delivery")
         print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']} \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
     print()
     print("Your Order Details")
@@ -180,8 +180,18 @@ def print_order(del_pick):
         print("Ordered: {}  Cost ${:.2f}".format(item, order_cost[count]))
         count = count + 1
     print()
+    if del_pick == "Delivery":
+        if len(order_list) >= 5:
+            print ("Your order will be delievered for free")
+        elif len(order_list) <= 5:
+            print ("There is an additional $9.00 delivery charge")
+            total_cost = total_cost + 9
     print("Total Order Cost")
     print(f"${total_cost:.2f}")
+    if del_pick == "Pickup":   
+        print("Thank you for your order, we'll let you know when it's ready")
+    elif del_pick == "Delivery":
+        print ("Thank you for your order, it will be delievered soon")
     
 # Ability to cancel or proceed with order 
 def confirm_cancel():
@@ -235,7 +245,7 @@ def new_exit():
         sys.exit()
             
 # Main Function
-def main():
+def main():  
     '''
     Purpose: To run all functions 
     a welcome message
