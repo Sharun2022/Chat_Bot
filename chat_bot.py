@@ -47,7 +47,6 @@ def val_int(low, high, question):
                     return num
             except ValueError:
                 print ("That is not a valid number")
-                print (f"Please enter a number between {low} and {high}")
 
 
 
@@ -95,7 +94,6 @@ def click_collect():
     customer_details['phone'] = not_blank(question)
     print (customer_details['phone'])
 
-    print("You will recieve a text, when the food is ready for pickup")
 
 # Delivery information - name address and phone 
 def delivery_info():
@@ -167,7 +165,7 @@ def print_order(del_pick):
     print()
     total_cost = sum(order_cost)
     print ("Customer Details")
-    if del_pick == "Pickup":
+    if del_pick == "Pickup":    
         print ("Your Order is for Pickup")
         print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']}")
     elif del_pick == "Delivery":
