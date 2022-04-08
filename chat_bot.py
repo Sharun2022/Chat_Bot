@@ -8,8 +8,8 @@ from random import randint
 # Constants
 LOW = 1
 HIGH = 2
-ph_low = 7
-ph_high = 10
+PH_LOW = 7
+PH_HIGH = 10
 
 # List of random names
 names = ["George", "Phoebe", "Sally",  "Michael",
@@ -37,20 +37,23 @@ customer_details = {}
 def not_blank(question):
     valid = False
     while not valid:
-        response = input(question)
+        response = input(question) # Asks for input (string)
         if response != "":
-            return response.title()
+            return response.title() # if response not blank, it returns response in title class
         else:
             print("This cannont be blank")
 
+# Validates inputs to check if they are a string
+# Takes question as parameter
+# Returns response in title class if valid
 def check_string(question):
-    while True:
-        response = input(question) 
-        x = response.isalpha()
-        if x == False:
+    while True: # Sets up Loop
+        response = input(question) # Asks for input (string)
+        x = response.isalpha() # Checks that input in alphebetical and sets x to True if alphas
+        if x == False: # if x is False prints error message
             print ("Input must only contain letters")
         else:
-            return response.title()
+            return response.title() #if True returns response in title class
 
 
 # Validates inputs to check if they an integer
@@ -64,8 +67,9 @@ def val_int(low, high, question):
                 print(f"The number must be {low} or {high}")
         except ValueError:
                 print ("That is not a valid number")
+            
 
-def check_phone(question, ph_low, ph_high):
+def check_phone(question, PH_LOW, PH_HIGH):
     while True:
         try:
             num = int(input(question))
@@ -74,7 +78,7 @@ def check_phone(question, ph_low, ph_high):
             while test_num > 0:
                 test_num = test_num//10
                 count = count + 1
-            if count >= ph_low and count <= ph_high:
+            if count >= PH_LOW and count <= PH_HIGH:
                 return str(num)
             else:
                 print("NZ phone numbers have between 7 and 10 digits")
@@ -120,7 +124,7 @@ def click_collect():
     print (customer_details['name'])
 
     question = ("Please enter your phone number ")
-    customer_details['phone'] = not_blank(question)
+    customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
     print (customer_details['phone'])
 
 
@@ -131,7 +135,7 @@ def delivery_info():
     print (customer_details['name'])
 
     question = ("Please enter your phone number ")
-    customer_details['phone'] = not_blank(question)
+    customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
     print (customer_details['phone'])
     
     question = ("Please enter your house number ")
@@ -220,7 +224,7 @@ def confirm_cancel():
     if confirm == 1:
         print ("Order Confirmed")
         print ("Your order has been sent to our kitchen")
-        print ("Your delicious Pizza will be with you shortly") 
+        print ("Your delicious food will be with you shortly") 
         new_exit()
                      
 
