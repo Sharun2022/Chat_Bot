@@ -1,5 +1,6 @@
 # A bot for ordering food online
 
+from asyncio.windows_events import INFINITE
 from cmath import inf
 import sys
 import random
@@ -33,6 +34,7 @@ order_cost = []
 # Customer details dictionary
 customer_details = {}
 
+
 # Validates inputs to check if they are blank
 # Takes question as parameter
 # Returns response in title class if valid
@@ -45,6 +47,7 @@ def not_blank(question):
             # if response not blank, it returns response in title class
         else:
             print("This cannont be blank")  # Prints error message
+
 
 # Validates inputs to check if they are a string
 # Takes question as parameter
@@ -68,13 +71,15 @@ def val_int(low, high, question):
         try:  # While the function is true
             num = int(input(question))  # Asks question
             if num >= low and num <= high:
-# If input is greater or equal to low (1) and less than or equal to high (2)
+            # If input is greater or equal to low (1) and less than or equal to high (2)
                 return num  # Returns and accepts input
             else:  # If input is not the above
                 print(f"The number must be between {low} and {high}")
                 # Asks for input again
         except ValueError:
                 print ("That is not a valid number")  # Prints error message
+
+
 # Validates input to check if they are a number
 # Takes question as parameter
 def check_phone(question, PH_LOW, PH_HIGH):
@@ -89,13 +94,14 @@ def check_phone(question, PH_LOW, PH_HIGH):
                 # test_num is equal to test_num divided by 10
                 count = count + 1  # Adds 1 to count
             if count >= PH_LOW and count <= PH_HIGH:
-# If count is greater or equal to PH_LOW and less than or equal to PH_HIGH
+            # If count is greater or equal to PH_LOW and less than or equal to PH_HIGH
                 return str(num)  # Returns and accepts input
             else:  # If input is not the above
                 print("NZ phone numbers have between 7 and 10 digits")
                 # Prints message that number must be between 7 and 10 digits
         except ValueError:
             print("Please enter a number ")  # Prints error message
+
 
 # Welcome message with random name
 def welcome():  # Defines following code as welcome
@@ -114,6 +120,7 @@ def welcome():  # Defines following code as welcome
     # Prints my name is (random name from list) with asterisks
     print("*** I will be here to help you order your delicious food online ***")
     # Prints message that they will helping the user make their order
+
 
 # Menu for click and collect or delivery
 def order_type():  # Defines following code as order_type
@@ -135,6 +142,7 @@ def order_type():  # Defines following code as order_type
         delivery_info()  # delivery_info function
         del_pick = "Delivery"  # del_pick equals Delivery
     return del_pick  # Returns and accepts inputs
+
 
 # Click and Collect information - name and phone number
 def click_collect():  # Defines following code as click_collect
@@ -180,23 +188,25 @@ def delivery_info():  # Defines following code as delivery_info
     # Validates the input of suburb
     print (customer_details['suburb'])  # Prints customer's suburb
 
-#Food menu
+
+#  Food menu
 def menu():  # Defines following code as menu
     number_food = 12  # Sets there are 12 foods on the menu
     for count in range(number_food):  # For food(s) ranged between 1 and 12
         print("{} {} ${:.2f}"  .format(count+1, food_names[count], food_prices[count]))
         # Print the food menu with prices
 
+
 #  Food order - menu - print each food ordered with cost
 def order_food():  # Defines following code as order_food
     # Ask for total number of pizzas for order
     num_food = 0  # num_food equals 0
     NUM_LOW = 1  # Set Constant as 1
-    NUM_HIGH = inf  # Set Constant as infinite
+    NUM_HIGH = 20  # Set Constant as 20
     MENU_LOW = 1  # Set Constant as 1
     MENU_HIGH = 12  # Set Constant as 12
     question = (f"Enter a number between {NUM_LOW} and {NUM_HIGH} ")
-    # Asks user to enter number between 1 and inf
+    # Asks user to enter number between 1 and 20
     print("How many food(s) do you want to order?")
     # Prints how many food(s) do you want to order?
     num_food = val_int(NUM_LOW, NUM_HIGH, question)
@@ -221,6 +231,7 @@ def order_food():  # Defines following code as order_food
             # Print food(s) ordered with prices
             num_food = num_food - 1
             # num_food equals num_food minus 1
+
 
 # Print order out -
 # Inc if order is delievery/click & collect and names and prices of each food
@@ -272,6 +283,8 @@ def print_order(del_pick):
 # Ability to cancel or proceed with order
 # Asks user to confirm their order
 # Asks user to enter 1 or 2 to confirm or cancel
+
+
 def confirm_cancel():  # Defines the following code as confirm_cancel
     question = (f"Enter a number between {LOW} and {HIGH} ")
     # Asks user to enter number between 1 and 2
@@ -305,6 +318,8 @@ def confirm_cancel():  # Defines the following code as confirm_cancel
 # Asks user to enter between 1 and 2
 # (1) equals start another order
 # (2) equals exit the bot
+
+
 def new_exit():  # Defines the following code as new_exit
     question = (f"Enter a number between {LOW} and {HIGH} ")
     # Asks user to enter between 1 or 2
@@ -323,7 +338,6 @@ def new_exit():  # Defines the following code as new_exit
         customer_details.clear()  # Clears the previous customer details
         main()  # Main Function
 
-
     elif confirm == 2:  # Else if confirm input equals 2
         print("Exit")  # Prints 'Exit' message
         order_list.clear()  # Clears the list of food names
@@ -332,6 +346,8 @@ def new_exit():  # Defines the following code as new_exit
         sys.exit()  # Exits the bot fully
 
 # Main Function
+
+
 def main():  # Define the following code as main
     '''
     Purpose: To run all functions
